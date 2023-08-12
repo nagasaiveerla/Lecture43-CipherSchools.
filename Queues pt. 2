@@ -1,0 +1,48 @@
+package queue;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class QueueInterfaceStudy{
+    public static void main(String args[] )
+    {
+        //interface queue -> linked list
+        //java provides us ll implementation of queues
+        Queue<Integer> q = new LinkedList<>();
+        System.out.println(q.isEmpty());
+        q.add(1);
+        q.add(2);
+        q.add(3);
+        System.out.println(q.isEmpty());
+        System.out.println(q.poll());//poll meanse dequeus and print
+        System.out.println(q.peek());
+    }
+}
+
+
+//in gfg
+
+class Queues
+{
+    Queue <Integer> q1 = new LinkedList<Integer>();
+    Queue <Integer> q2 = new LinkedList<Integer>();
+    void push(int a)
+    {
+        q1.add(a);
+
+    }
+    int pop()
+    {
+        if(q1.isEmpty()) return - 1;
+        while(q1.size!=1)
+        {
+            q2.add(q1.poll());//remove from q1 and add in q2
+
+        }
+        int lastElement = q1.poll();
+        //swap q1 and q2
+        Queue<Integer>temp = q1;
+        q1 = q2;
+        q2 = temp;
+        return lastElement;
+    }
